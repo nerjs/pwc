@@ -1,6 +1,13 @@
 {
-    "private": true,
-    "workspaces": [
-      "packages/*"
-    ]
-  }
+  "private": true,
+  "scripts": {
+    "docker:start": "docker-compose -f docker-compose.dev.yml up -d",
+    "docker:build": "docker-compose -f docker-compose.dev.yml up --build -d",
+    "docker:stop": "docker-compose -f docker-compose.dev.yml down",
+    "docker:restart": "npm run docker:stop && npm run docker:start",
+    "docker:reload": "npm run docker:stop && rm -rf ./data && npm run docker:build"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
