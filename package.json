@@ -6,16 +6,21 @@
     "docker:stop": "docker-compose -f docker-compose.dev.yml down",
     "docker:restart": "npm run docker:stop && npm run docker:start",
     "docker:reload": "npm run docker:stop && rm -rf ./data && npm run docker:build",
-    "lint": "eslint ./*"
+    "lint": "eslint ./"
   },
   "workspaces": [
     "packages/*"
-  ],
+  ],"husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.5",
     "prettier": "^1.18.2"
   }
 }
