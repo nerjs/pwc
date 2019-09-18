@@ -22,5 +22,7 @@ services:
     restart: always
     env_file:
       - .env
+    ports:
+      - ${GQL_SERVER_OUT_PORT}:3000
     
         

@@ -1,11 +1,11 @@
-require('./config').default
+require('./config')
 
 const app = require('./app')
 const routes = require('./routes')
 const errorMdw = require('./mdw/error')
 const notFoundErrorMdw = require('./mdw/not_found')
 
-const { SERVER_HOST, SERVER_PORT } = process.env
+const { GQL_SERVER_PORT } = process.env
 
 app.use(routes)
 // routes(app)
@@ -13,7 +13,7 @@ app.use(routes)
 app.use(notFoundErrorMdw)
 app.use(errorMdw)
 
-app.listen(Number(SERVER_PORT), SERVER_HOST, err => {
+app.listen(Number(GQL_SERVER_PORT), err => {
     if (err) return console.error(err)
-    console.info(`Start server \n\thttp://${SERVER_HOST}:${SERVER_PORT}`.yellow)
+    console.info(`Start server \n\thttp://localhost:${GQL_SERVER_PORT}`.yellow)
 })
