@@ -15,10 +15,10 @@ services:
       - ${MONGO_EXPRESS_OUT_PORT}:8081
     env_file:
       - .env
-  server:
+  gql-server:
     build: 
       context: ./
-      dockerfile: ./packages/server/Dockerfile 
+      dockerfile: ./packages/gql-server/Dockerfile 
     restart: always
     env_file:
       - .env
