@@ -16,5 +16,7 @@ module.exports = (tags, { time: timeLevel, table: tableLevel, ...levels }) => {
     log.timeEnd = timeEnd
     log.table = table
 
+    log.clear = console.clear.bind(console)
+
     return log
 }
