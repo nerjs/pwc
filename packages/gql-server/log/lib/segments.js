@@ -30,6 +30,5 @@ exports.getLabel = (tags = [], filename) => {
             return `${tag}`.grey.dim
         })
         .join('/'.gray)
-    // return `[ ${terminalLink.isSupported ? terminalLink(txt, `code file://${filename}`) : txt} ]`
     return `[${terminalLink.isSupported ? terminalLink(txt, `file://${filename}`) : txt}]`
 }
