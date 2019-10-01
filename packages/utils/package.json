@@ -2,5 +2,12 @@
   "name": "@pw/utils",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "merge": "^1.2.1",
+    "moment": "^2.24.0",
+    "pretty-time": "^1.1.0",
+    "terminal-link": "^2.0.0"
+  }
 }
