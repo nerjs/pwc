@@ -1,6 +1,6 @@
 require('./config')
 
-const log = require('@pw/utils/log')(module)
+const log = require('@pw/log')(module)
 const app = require('./app')
 const routes = require('./routes')
 const errorMdw = require('./mdw/error')

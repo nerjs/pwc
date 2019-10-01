@@ -5,7 +5,7 @@ ENV GQL_SERVER_PORT 3000
 WORKDIR /app
 
 COPY ./package.json ./package.json
-COPY ./packages/utils ./packages/utils
+COPY ./utils ./utils
 COPY ./packages/gql-server ./packages/gql-server
 COPY ./packages/gql-server/.env.example ./packages/gql-server/.env
 
