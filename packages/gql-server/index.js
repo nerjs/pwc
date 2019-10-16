@@ -1,10 +1,8 @@
 require('./config')
 const log = require('@pw/log')(module)
-const { createApp } = require('@pw/express')
+const { createApp, notFoundErrorMdw, errorMdw } = require('@pw/express')
 const path = require('path')
 const routes = require('./routes')
-const errorMdw = require('./mdw/error')
-const notFoundErrorMdw = require('./mdw/not_found')
 
 const { GQL_SERVER_PORT } = process.env
 
