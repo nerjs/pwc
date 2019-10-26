@@ -1,8 +1,11 @@
+const HttpError = require('@pw/errors/http')
+
 module.exports = (err, req, res, next) => {
-    res.locals.message = err.message
-    res.locals.error = req.app.get('env') === 'development' ? err : {}
+    const error = err instanceof HttpError ? err : new HttpError(err.code, err.message)
+    res.locals.message = error.message
+    res.locals.error = req.app.get('env') === 'development' ? error : {}
 
     // render the error page
-    res.status(err.code || err.status || 500)
+    res.status(error.code || error.status || 500)
     res.render('error')
 }
