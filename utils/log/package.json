@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@pw/all": "1.0.0",
     "colors": "^1.4.0",
     "merge": "^1.2.1",
     "moment": "^2.24.0",
