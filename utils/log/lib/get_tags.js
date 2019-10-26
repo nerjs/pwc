@@ -14,5 +14,9 @@ module.exports = mod => {
 
     if (tags[tags.length - 1] == 'index.js') tags.pop()
 
-    return { tags, filename }
+    return {
+        tags,
+        filename,
+        name: currentPackage ? currentPackage.name : null,
+    }
 }
