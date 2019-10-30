@@ -3,6 +3,7 @@ const log = require('@pw/log')(module)
 const { createApp, notFoundErrorMdw, errorMdw } = require('@pw/express')
 const path = require('path')
 const routes = require('./routes')
+const gqlApp = require('./gql')
 
 const { GQL_SERVER_PORT } = process.env
 
@@ -13,8 +14,8 @@ const app = createApp({
     static: path.join(__dirname, 'root'),
 })
 
+gqlApp(app)
 app.use(routes)
-// routes(app)
 
 app.use(notFoundErrorMdw)
 app.use(errorMdw)
