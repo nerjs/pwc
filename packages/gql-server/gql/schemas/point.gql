@@ -1,0 +1,10 @@
+
+type Point {
+    lat: Float! 
+    lng: Float!
+}
+
+input PointInput {
+    lat: Float!
+    lng: Float!
+}

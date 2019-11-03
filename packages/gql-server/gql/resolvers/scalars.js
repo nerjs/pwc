@@ -1,20 +1,23 @@
-const { GraphQLScalarType, GraphQLError, Kind } = require('graphql')
+const { GraphQLScalarType, Kind } = require('graphql')
+const { GqlValidationError } = require('@pw/errors/gql')
 
 const MAX_NUMBER = Math.pow(2, 64) - 1
 const MIN_NUMBER = -Math.pow(2, 63)
 
 const parseNumber = num => {
-    if (typeof num !== 'number' || isNaN(num)) throw new GraphQLError('Value is not a number')
-    if (num < MIN_NUMBER || num > MAX_NUMBER) throw new GraphQLError('Number is out of range')
+    if (typeof num !== 'number' || isNaN(num))
+        throw new GqlValidationError('Value is not a number', 'NaN', 'Number')
+    if (num < MIN_NUMBER || num > MAX_NUMBER)
+        throw new GqlValidationError('Number is out of range', num, `${MIN_NUMBER}<>${MAX_NUMBER}`)
     if (num !== parseInt(num, 10))
-        throw new GraphQLError(`Invalid non-fractional number. [${num}!==${parseInt(num)}]`)
+        throw new GqlValidationError(`Invalid non-fractional number.`, num, parseInt(num))
 
     return num
 }
 
 const parseDate = _date => {
     const date = new Date(_date)
-    if (isNaN(date)) throw new GraphQLError(`Invalid Date. [${_date}===${date}]`)
+    if (isNaN(date)) throw new GqlValidationError(`Invalid Date.`, _date, date)
     return date
 }
 
@@ -27,7 +30,7 @@ const NumberResolver = new GraphQLScalarType({
     parseValue: parseNumber,
     parseLiteral(ast) {
         if (ast.kind !== Kind.INT)
-            throw new GraphQLError(`Incorrect type argument. [${ast.kind}!==${Kind.INT}]`, ast)
+            throw new GqlValidationError(`Incorrect type argument.`, ast.kind, Kind.INT)
 
         return parseNumber(Number(ast.value))
     },
@@ -46,9 +49,10 @@ const DateResolver = new GraphQLScalarType({
     parseLiteral: ast => {
         if (ast.kind === Kind.INT) return parseDate(Number(ast.value))
         if (ast.kind === Kind.STRING) return parseDate(ast.value)
-        throw new GraphQLError(
+        throw new GqlValidationError(
             `Incorrect type argument. [${ast.kind}!==(${Kind.INT}|${Kind.STRING})]`,
-            ast,
+            ast.kind,
+            [Kind.INT, Kind.STRING],
         )
     },
 })

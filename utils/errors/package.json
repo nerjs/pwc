@@ -2,6 +2,8 @@
     "name": "@pw/errors",
     "version": "1.0.0",
     "main": "index.js",
-    "license": "MIT"
-  }
-  
+    "license": "MIT",
+    "dependencies": {
+        "apollo-server-errors": "^2.3.4"
+    }
+}

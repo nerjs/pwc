@@ -1,0 +1,33 @@
+
+# Обьект с описанием всех данных камеры
+type Webcam {
+    id: ID!
+    point: Point!
+    title: String
+    origin: Origin
+    stream: String
+    isReady: Boolean
+    updateTime: Date!
+    createdTime: Date!
+}
+
+input WebcamInput {
+    title: String
+    point: PointInput
+    origin: OriginInput
+}
+
+type ListResultWebcams {
+    count: Int! 
+    allCount: Int!
+    list: [Webcam!]!
+}
+
+type Query {
+    getWebcam(id: ID!): Webcam
+    setWebcam(input: WebcamInput!): Webcam!
+    editWebcam(input: WebcamInput!): Webcam!
+    listWebcam(count:Int, offset:Int): ListResultWebcams!
+}
+
+
