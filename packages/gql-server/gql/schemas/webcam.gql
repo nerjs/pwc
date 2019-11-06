@@ -3,12 +3,12 @@
 type Webcam {
     id: ID!
     point: Point!
-    title: String
+    title: String!
     origin: Origin
     stream: String
-    isReady: Boolean
-    updateTime: Date!
-    createdTime: Date!
+    isReady: Boolean!
+    createdAt: Date!
+    updatedAt: Date!
 }
 
 input WebcamInput {
