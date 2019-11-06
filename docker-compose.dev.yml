@@ -8,6 +8,8 @@ services:
       - ./volumes_data/mongo:/data/db
     env_file:
       - .env
+    ports:
+      - 27017:27017
   mongo-express:
     image: mongo-express
     restart: always
