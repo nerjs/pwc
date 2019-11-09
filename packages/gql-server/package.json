@@ -13,6 +13,7 @@
     "@pw/express": "1.0.0",
     "@pw/log": "1.0.0",
     "@pw/db": "1.0.0",
+    "@pw/validate": "1.0.0",
     "@pw/lib": "1.0.0",
     "apollo-server-express": "^2.9.7",
     "colors": "^1.4.0",
