@@ -20,6 +20,7 @@ app.use(routes)
 app.use(notFoundErrorMdw)
 app.use(errorMdw)
 
+log.info('Start service')
 app.listen(Number(GQL_SERVER_PORT), err => {
     if (err) return log.error(err)
     log.info(`Start server \n\thttp://localhost:${GQL_SERVER_PORT}`.yellow)

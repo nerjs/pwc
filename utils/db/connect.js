@@ -37,6 +37,7 @@ const connect = _params => {
     const tryConnect = async i => {
         i++
         await waitPort(paramsWaitPort)
+
         try {
             await mongoose.connect(dbUri, { dbName, ...params })
             log.info('MongoDb connected!'.yellow)
