@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const waitPort = require('wait-port')
-const sleep = require('@pw/all/sleep')
+const sleep = require('@pw/lib/sleep')
 const log = require('@pw/log')(module)
 
 const { DB_PROTOCOL, DB_HOST, DB_PORT, DB_NAME, DB_MAX_TRY_CONNECT } = process.env

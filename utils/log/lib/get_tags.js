@@ -1,5 +1,5 @@
 const path = require('path')
-const getPackage = require('@pw/all/get_package')
+const getPackage = require('@pw/lib/get_package')
 
 module.exports = mod => {
     const currentPackage = getPackage(mod)

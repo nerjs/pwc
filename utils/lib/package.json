@@ -1,5 +1,5 @@
 {
-    "name": "@pw/all",
+    "name": "@pw/lib",
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT"
