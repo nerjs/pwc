@@ -1,3 +1,4 @@
+const normalizeError = require('./normalize_error')
 const validateMdw = require('./validate')
 
-module.exports = [validateMdw]
+module.exports = [normalizeError, validateMdw]
