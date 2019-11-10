@@ -12,9 +12,9 @@ type Webcam {
 }
 
 input WebcamInput {
-    title: String
-    point: PointInput
-    origin: OriginInput
+    title: String!
+    point: PointInput!
+    origin: OriginInput!
 }
 
 type ListResultWebcams {
