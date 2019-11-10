@@ -1,5 +1,5 @@
 const { ApolloError } = require('apollo-server-errors')
-const { NOT_FOUND_ITEM, DUPLICATE_ITEM, GQL_VALIDATION, VALIDATION } = require('./gql_codes')
+const { NOT_FOUND_ITEM, DUPLICATE_ITEM, GQL_VALIDATION, VALIDATION } = require('./error_codes')
 
 class NotFoundItemError extends ApolloError {
     constructor(name, msg) {
