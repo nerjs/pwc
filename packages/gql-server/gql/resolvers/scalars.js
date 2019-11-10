@@ -1,5 +1,5 @@
 const { GraphQLScalarType, Kind } = require('graphql')
-const { GqlValidationError } = require('@pw/errors/gql')
+const { GqlValidationError } = require('@pw/errors/gql_validation')
 
 const MAX_NUMBER = Math.pow(2, 64) - 1
 const MIN_NUMBER = -Math.pow(2, 63)

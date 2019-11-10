@@ -1,6 +1,6 @@
 const { isSchema } = require('yup')
 const webcamSchema = require('@pw/validate/webcam')
-const { ValidationError } = require('@pw/errors/gql')
+const ValidationError = require('@pw/errors/validation')
 
 const createValidateResolver = fields => async (resolver, parent, args, ctx, info) => {
     try {
