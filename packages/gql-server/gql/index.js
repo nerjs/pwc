@@ -16,7 +16,7 @@ const executableSchema = makeExecutableSchema({
     resolvers,
 })
 
-const schema = applyMiddleware(executableSchema, middlewares)
+const schema = applyMiddleware(executableSchema, ...middlewares)
 
 module.exports = app => {
     const server = new ApolloServer({

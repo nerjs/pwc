@@ -1,5 +1,5 @@
 const { ApolloError } = require('apollo-server-errors')
-const { NOT_FOUND_ITEM, DUPLICATE_ITEM, GQL_VALIDATION } = require('./gql_codes')
+const { NOT_FOUND_ITEM, DUPLICATE_ITEM, GQL_VALIDATION, VALIDATION } = require('./gql_codes')
 
 class NotFoundItemError extends ApolloError {
     constructor(name, msg) {
@@ -39,6 +39,23 @@ class GqlValidationError extends ApolloError {
     }
 }
 
+class ValidationError extends ApolloError {
+    constructor(error) {
+        super(error.message, VALIDATION)
+
+        this.details = []
+
+        if (error.inner && Array.isArray(error.inner)) {
+            this.details = error.inner.map(({ path, message, type }) => ({ path, message, type }))
+        }
+    }
+
+    get name() {
+        return 'ValidationError'
+    }
+}
+
 exports.NotFoundItemError = NotFoundItemError
 exports.DuplicateItemError = DuplicateItemError
 exports.GqlValidationError = GqlValidationError
+exports.ValidationError = ValidationError
