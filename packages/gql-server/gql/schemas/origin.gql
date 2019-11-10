@@ -1,11 +1,9 @@
 type Origin {
-    url: String!
-    stream: String!
+    url: String
     title: String
 }
 
 input OriginInput {
-    url: String!
-    stream: String!
+    url: String
     title: String
 }

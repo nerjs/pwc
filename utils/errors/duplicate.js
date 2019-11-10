@@ -14,4 +14,4 @@ class DuplicateItemError extends ApolloError {
     }
 }
 
-exports.DuplicateItemError = DuplicateItemError
+module.exports = DuplicateItemError

@@ -29,7 +29,8 @@ const formatError = err => {
 
 module.exports = async (resolver, parent, args, ctx, info) => {
     try {
-        await resolver(parent, args, ctx, info)
+        const result = await resolver(parent, args, ctx, info)
+        return result
     } catch (err) {
         throw formatError(err, ctx)
     }

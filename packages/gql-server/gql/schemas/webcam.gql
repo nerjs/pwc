@@ -13,9 +13,11 @@ type Webcam {
 
 input WebcamInput {
     title: String!
+    stream: String!
     point: PointInput!
-    origin: OriginInput!
+    origin: OriginInput
 }
+
 
 type ListResultWebcams {
     count: Int! 
@@ -25,9 +27,9 @@ type ListResultWebcams {
 
 type Query {
     getWebcam(id: ID!): Webcam
-    setWebcam(input: WebcamInput!): Webcam!
-    editWebcam(input: WebcamInput!): Webcam!
-    listWebcam(count:Int, offset:Int): ListResultWebcams!
+    addWebcam(input: WebcamInput!): Webcam!
+    deleteWebcam(id:ID!): Boolean!
+    listWebcams(count:Int, offset:Int): ListResultWebcams!
 }
 
 

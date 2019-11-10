@@ -1,32 +1,40 @@
-const { NotFoundItemError } = require('@pw/errors/gql')
+const NotFoundItemError = require('@pw/errors/not_found_item')
+const DuplicateError = require('@pw/errors/duplicate')
+const { Webcam } = require('@pw/db')
 
-const all = []
-let i = 1
 module.exports = {
     Query: {
-        getWebcam: (parent, { id }) => {
-            const wc = all.find(item => item.id === id)
-            if (!wc) throw new NotFoundItemError('Webcam')
-            return wc
+        addWebcam: async (_, { input }) => {
+            const { lat, lng } = input.point
+            if (await Webcam.exists({ 'point.lat': lat, 'point.lng': lng }))
+                throw new DuplicateError('webcam', `Point [lat=${lat}, lng=${lng}] already exists!`)
+            const webcam = new Webcam(input)
+            await webcam.save()
+            return webcam
         },
 
-        editWebcam: () => {
-            return { id: 'kk' }
+        deleteWebcam: async (_, { id }) => {
+            const webcam = await Webcam.findById(id)
+            if (!webcam) throw new NotFoundItemError('Webcam')
+            await webcam.remove()
+            return true
         },
 
-        setWebcam: (_, { input }) => {
-            const id = `${i++}`
-            all.push({ id, ...input })
-            console.log(all[all.length - 1])
-            return { id, ...input }
+        getWebcam: async (_, { id }) => {
+            const webcam = await Webcam.findById(id)
+            if (!webcam) throw new NotFoundItemError('Webcam')
+            return webcam
         },
 
-        listWebcam: (_, { count = 1, offset = 0 }) => {
-            const arr = all.filter((_, i) => i >= offset && i < offset + count)
+        listWebcams: async (_, { count = 1, offset = 0 }) => {
+            const allCount = await Webcam.estimatedDocumentCount()
+            const list = await Webcam.find()
+                .skip(offset)
+                .limit(count)
             return {
-                count: arr.length,
-                allCount: all.length,
-                list: arr,
+                count: list.length,
+                allCount,
+                list,
             }
         },
     },
