@@ -1,3 +1,5 @@
+const { GRAPHQL_ENDPOINT } = process.env
+
 module.exports = (req, res, next) => {
-    res.render('index', {})
+    res.redirect(301, GRAPHQL_ENDPOINT)
 }
