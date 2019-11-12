@@ -42,7 +42,12 @@ module.exports = (settings = {}) => {
     if (settings.favicon) app.use(serveFavicon(settings.favicon))
 
     // STATIC SETTINGS
-    if (settings.static) app.use(express.static(settings.static))
+    if (settings.static) {
+        const staticFiles = Array.isArray(settings.static) ? settings.static : [settings.static]
+        staticFiles.forEach(staticFile => {
+            app.use(express.static(staticFile))
+        })
+    }
 
     return app
 }
