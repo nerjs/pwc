@@ -16,10 +16,3 @@ const render = Comp => {
 }
 
 render(App)
-
-if (module.hot) {
-    module.hot.accept('./app', () => {
-        let NewApp = require('./app').default
-        render(NewApp)
-    })
-}
