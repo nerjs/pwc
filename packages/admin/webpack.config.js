@@ -93,9 +93,22 @@ const config = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
             NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+            BUILD_TYPE: JSON.stringify(process.env.BUILD_TYPE || process.env.NODE_ENV),
         }),
         new DotEnv(),
     ],
+}
+
+if (process.env.BUILD_TYPE === 'hot') {
+    config.entry.main = [
+        'react-hot-loader/patch',
+        'webpack-hot-middleware/client',
+        config.entry.main,
+    ]
+
+    config.module.rules[0].use[0].options.plugins.push('react-hot-loader/babel')
+
+    config.plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 
 module.exports = config
