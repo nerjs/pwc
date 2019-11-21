@@ -1,10 +1,13 @@
 const webpackConfig = require('@pw/webpack')
-
 const path = require('path')
 
-module.exports = webpackConfig(
-    path.join(__dirname, 'src'),
-    'main',
-    './index.js',
-    path.join(__dirname, 'build'),
-)
+module.exports = webpackConfig({
+    context: path.join(__dirname, 'src'),
+    name: 'main',
+    entryPath: './index.js',
+    outputPath: path.join(__dirname, 'build'),
+    alias: {
+        '@comp': path.join(__dirname, 'src', 'components'),
+        '@data': path.join(__dirname, 'src', 'data'),
+    },
+})

@@ -4,7 +4,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const { NODE_ENV } = process.env
 
-module.exports = (context, name, entryPath, outputPath) => {
+module.exports = ({ context, name, entryPath, outputPath, alias }) => {
     const config = {
         context,
         entry: {
@@ -85,7 +85,7 @@ module.exports = (context, name, entryPath, outputPath) => {
         },
 
         resolve: {
-            alias: {},
+            alias: alias || {},
         },
 
         plugins: [
