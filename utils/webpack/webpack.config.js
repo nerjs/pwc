@@ -69,13 +69,6 @@ module.exports = ({ context, name, entryPath, outputPath, alias }) => {
                                     '@babel/plugin-proposal-class-properties',
                                     '@babel/plugin-proposal-object-rest-spread',
                                     '@babel/plugin-transform-runtime',
-                                    [
-                                        'babel-plugin-styled-components',
-                                        {
-                                            displayName: true,
-                                            fileName: true,
-                                        },
-                                    ],
                                 ],
                             },
                         },
@@ -97,6 +90,16 @@ module.exports = ({ context, name, entryPath, outputPath, alias }) => {
             }),
             new DotEnv(),
         ],
+    }
+
+    if (process.env.NODE_ENV !== 'production') {
+        config.module.rules[0].use[0].options.plugins.push([
+            'babel-plugin-styled-components',
+            {
+                // displayName: true,
+                fileName: true,
+            },
+        ])
     }
 
     if (process.env.BUILD_TYPE === 'hot') {
