@@ -9,5 +9,6 @@ module.exports = webpackConfig({
     alias: {
         '@comp': path.join(__dirname, 'src', 'components'),
         '@data': path.join(__dirname, 'src', 'data'),
+        '@styled': path.join(__dirname, 'src', 'styled'),
     },
 })

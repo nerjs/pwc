@@ -5,7 +5,8 @@
     "baseUrl": "./",
     "paths": {
       "@data/*": ["src/data/*"],
-      "@comp/*": ["src/components/*"]
+      "@comp/*": ["src/components/*"],
+      "@styled/*": ["src/styled/*"]
     }
   },
   "exclude": ["node_modules", "build"]
