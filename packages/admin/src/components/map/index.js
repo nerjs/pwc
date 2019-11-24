@@ -12,7 +12,9 @@ const Map = props => {
 }
 
 Map.propTypes = {
-    defaultCenter: pt.array,
+    defaultCenter: pt.arrayOf(pt.number),
+    defaultZoom: pt.number,
+    onChange: pt.func,
 }
 
 export default Map
