@@ -10,5 +10,6 @@ module.exports = webpackConfig({
         '@comp': path.join(__dirname, 'src', 'components'),
         '@data': path.join(__dirname, 'src', 'data'),
         '@styled': path.join(__dirname, 'src', 'styled'),
+        '@hooks': path.join(__dirname, 'src', 'hooks'),
     },
 })
