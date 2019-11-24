@@ -8,6 +8,7 @@
       "@comp/*": ["src/components/*"],
       "@styled/*": ["src/styled/*"],
       "@hooks/*": ["src/hooks/*"]
+      "@lib/*": ["src/lib/*"]
     }
   },
   "exclude": ["node_modules", "build"]
