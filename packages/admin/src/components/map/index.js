@@ -1,20 +1,47 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import pt from 'prop-types'
-import styled from 'styled-components'
+// import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
+import MapWrapper from './MapWrapper'
+import Controll from './controll'
 
-const StyledMap = styled.div`
-    height: 100%;
-    width: 100%;
-`
+const MapContainer = ({ defaultCenter, defaultZoom, onChange }) => {
+    // const [cur, setCur] = useState({center: defaultCenter, zoom:})
 
-const Map = props => {
-    return <StyledMap></StyledMap>
+    const handlerChange = useCallback((_, { center, zoom }) => {
+        onChange({
+            center: {
+                lat: center.lat(),
+                lng: center.lng(),
+            },
+            zoom,
+        })
+    })
+
+    return (
+        <MapWrapper
+            initialCenter={defaultCenter}
+            zoom={defaultZoom}
+            onBounds_changed={handlerChange}
+            onZoom_changed={handlerChange}
+        >
+            <Controll />
+        </MapWrapper>
+    )
 }
 
-Map.propTypes = {
-    defaultCenter: pt.arrayOf(pt.number),
+MapContainer.defaultProps = {
+    defaultCenter: { lat: 0, lng: 0 },
+    defaultZoom: 6,
+    onChange: () => {},
+}
+
+MapContainer.propTypes = {
+    defaultCenter: pt.shape({
+        lat: pt.number.isRequired,
+        lng: pt.number.isRequired,
+    }),
     defaultZoom: pt.number,
     onChange: pt.func,
 }
 
-export default Map
+export default MapContainer

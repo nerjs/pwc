@@ -13,11 +13,11 @@ export default () => {
         return () => {
             mounted = false
         }
-    })
+    }, [])
 
     const changePos = useCallback(({ center, zoom }) => {
         if (!mounted) return
-        const newPos = `${center[0]}:${center[1]}:${zoom}`
+        const newPos = `${center.lat}:${center.lng}:${zoom}`
         let newPath = ''
         if (pos) {
             newPath = location.pathname.replace(pos, newPos)
@@ -33,7 +33,7 @@ export default () => {
     const [lat, lng, zoom] = pos.split(':').map(n => Number(n))
 
     return {
-        center: !isNaN(lat) && !isNaN(lng) ? [lat, lng] : undefined,
+        center: !isNaN(lat) && !isNaN(lng) ? { lat, lng } : undefined,
         zoom: !isNaN(zoom) && zoom > 1 && zoom < 15 ? zoom : undefined,
         changePos,
     }
