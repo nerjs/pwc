@@ -1,7 +1,5 @@
-import React, { useEffect, useState, useCallback } from 'react'
-import MapContainer from './container'
-import Map from '@comp/map/index'
-import { useParams, useHistory, useLocation, useRouteMatch } from 'react-router-dom'
+import { useEffect, useCallback } from 'react'
+import { useParams, useHistory, useLocation } from 'react-router-dom'
 
 export default () => {
     const location = useLocation()

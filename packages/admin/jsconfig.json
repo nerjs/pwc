@@ -7,7 +7,7 @@
       "@data/*": ["src/data/*"],
       "@comp/*": ["src/components/*"],
       "@styled/*": ["src/styled/*"],
-      "@hooks/*": ["src/hooks/*"]
+      "@hooks/*": ["src/hooks/*"],
       "@lib/*": ["src/lib/*"]
     }
   },

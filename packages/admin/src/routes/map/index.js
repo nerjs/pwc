@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React from 'react'
 import MapContainer from './container'
 import Map from '@comp/map/index'
-import { useParams, useHistory, useLocation, useRouteMatch } from 'react-router-dom'
-import useRoutePosition from '../../hooks/useRoutePosition'
+import useRoutePosition from '@hooks/useRoutePosition'
 
 const MapRoute = () => {
     const { center, zoom, changePos } = useRoutePosition()
