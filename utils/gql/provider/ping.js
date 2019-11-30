@@ -11,7 +11,7 @@ const PING_QUERY = gql`
 const PingModule = ({ children }) => {
     const [loaded, setLoaded] = useState(false)
     const { loading, error, data } = useQuery(PING_QUERY, {
-        pollInterval: 5000,
+        // pollInterval: 5000,
     })
 
     useEffect(() => {
