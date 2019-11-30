@@ -16,7 +16,7 @@ const createValidateResolver = fields => async (resolver, parent, args, ctx, inf
 }
 
 module.exports = {
-    Query: {
+    Mutation: {
         addWebcam: createValidateResolver({ input: webcamInput }),
     },
 }

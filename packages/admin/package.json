@@ -21,6 +21,7 @@
     "@pw/gql": "1.0.0",
     "@pw/log": "1.0.0",
     "@pw/react": "1.0.0",
+    "@pw/validate": "1.0.0",
     "dotenv": "^8.2.0",
     "formik": "^2.0.6",
     "google-maps-react": "^2.0.2",
