@@ -28,10 +28,10 @@ const MapContainer = ({ defaultCenter, defaultZoom, onChange }) => {
         </MapWrapper>
     )
 }
-
+// 50.44663534442916:30.52750488940611:11
 MapContainer.defaultProps = {
-    defaultCenter: { lat: 0, lng: 0 },
-    defaultZoom: 6,
+    defaultCenter: { lat: 50.44663534442916, lng: 30.52750488940611 },
+    defaultZoom: 11,
     onChange: () => {},
 }
 
