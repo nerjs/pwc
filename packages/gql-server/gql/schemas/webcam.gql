@@ -27,9 +27,12 @@ type ListResultWebcams {
 
 type Query {
     getWebcam(id: ID!): Webcam
+    listWebcams(count:Int, offset:Int): ListResultWebcams!
+}
+
+type Mutation {
     addWebcam(input: WebcamInput!): Webcam!
     deleteWebcam(id:ID!): Boolean!
-    listWebcams(count:Int, offset:Int): ListResultWebcams!
 }
 
 
