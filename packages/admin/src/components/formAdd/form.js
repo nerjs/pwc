@@ -1,7 +1,7 @@
 import React from 'react'
-import { FormWrap, FormCol } from './container'
-import TextField from './text'
-import Alert from './alert'
+import { FormWrap, FormCol } from './utils/container'
+import TextField from './utils/field'
+import Alert from './utils/alert'
 
 const Form = () => {
     return (

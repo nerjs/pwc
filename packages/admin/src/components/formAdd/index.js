@@ -4,8 +4,8 @@ import { useMutation } from '@apollo/react-hooks'
 import { useHistory } from 'react-router-dom'
 import webcamInputSchema from '@pw/validate/webcam_input'
 import AddForm from './form'
-import SubmitBtn from './btn'
-import addWebcamGql from './addWebcam.gql'
+import SubmitBtn from './utils/btn'
+import addWebcamGql from './utils/addWebcam.gql'
 import { parseValidationError } from '@lib/parseError'
 
 const initialValues = {
