@@ -24,9 +24,7 @@ const Input = styled.input`
 `
 
 const TextField = ({ name, label, type = 'text' }) => {
-    const [inputProps, { touched, error, ...ggg }] = useField(name)
-
-    console.log(ggg)
+    const [inputProps, { touched, error }] = useField(name)
 
     return (
         <FieldWrap>
