@@ -1,5 +1,9 @@
 mutation($input:WebcamInput!){
   addWebcam(input:$input) {
     id
+    point {
+      lat
+      lng
+    }
   }
 }
