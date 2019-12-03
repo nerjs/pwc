@@ -23,11 +23,11 @@ const Input = styled.input`
     padding: 3px 5px;
 `
 
-const TextField = ({ name, label, type = 'text' }) => {
+const TextField = ({ name, label, type = 'text', ...props }) => {
     const [inputProps, { touched, error }] = useField(name)
 
     return (
-        <FieldWrap>
+        <FieldWrap {...props}>
             <Label error={touched && error}>
                 {label}
                 {touched && error ? ` | ${error}` : ''}

@@ -11,5 +11,6 @@
       "@lib/*": ["src/lib/*"]
     }
   },
-  "exclude": ["node_modules", "build"]
+  "exclude": ["build"],
+  "include": ["node_modules"]
 }
