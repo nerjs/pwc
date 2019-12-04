@@ -13,7 +13,8 @@ const MapContainer = ({
     children,
 }) => {
     const handlerChange = useCallback(
-        (_, { center, zoom }) => {
+        (_, map) => {
+            const { center, zoom } = map
             if (
                 !diffCenter(
                     {
@@ -25,13 +26,16 @@ const MapContainer = ({
             )
                 return
 
-            onChange({
-                center: {
-                    lat: prepareNumber(center.lat()),
-                    lng: prepareNumber(center.lng()),
+            onChange(
+                {
+                    center: {
+                        lat: prepareNumber(center.lat()),
+                        lng: prepareNumber(center.lng()),
+                    },
+                    zoom,
                 },
-                zoom,
-            })
+                map,
+            )
         },
         [innerCenter],
     )
