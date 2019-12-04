@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Map from '@comp/map'
+import { AddMarker } from '@comp/marker'
 
 const Container = styled.div`
     position: relative;
@@ -10,11 +11,11 @@ const Container = styled.div`
 `
 
 const MapInfoBlock = ({ value, setValue }) => {
-    const handleChange = useCallback(({ center }) => setValue(center), [setValue])
-
     return (
         <Container className="qwerty">
-            <Map center={value} onChange={handleChange}></Map>
+            <Map onClick={setValue} center={{ lat: 0, lng: 0 }}>
+                <AddMarker {...value} />
+            </Map>
         </Container>
     )
 }

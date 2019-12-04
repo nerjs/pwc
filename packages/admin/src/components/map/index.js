@@ -4,7 +4,14 @@ import MapWrapper from './MapWrapper'
 import Controll from './controll'
 import { prepareCenter, prepareNumber, diffCenter } from './helpers'
 
-const MapContainer = ({ center: innerCenter, defaultCenter, defaultZoom, onChange }) => {
+const MapContainer = ({
+    center: innerCenter,
+    defaultCenter,
+    defaultZoom,
+    onChange,
+    onClick,
+    children,
+}) => {
     const handlerChange = useCallback(
         (_, { center, zoom }) => {
             if (
@@ -29,14 +36,26 @@ const MapContainer = ({ center: innerCenter, defaultCenter, defaultZoom, onChang
         [innerCenter],
     )
 
+    const handlerClick = useCallback(
+        (_, __, { latLng }) => {
+            onClick({
+                lat: prepareNumber(latLng.lat()),
+                lng: prepareNumber(latLng.lng()),
+            })
+        },
+        [onClick],
+    )
+
     return (
         <MapWrapper
             initialCenter={defaultCenter || innerCenter}
             zoom={defaultZoom}
             onBounds_changed={handlerChange}
             onZoom_changed={handlerChange}
+            onClick={handlerClick}
         >
             <Controll center={innerCenter} />
+            {children || null}
         </MapWrapper>
     )
 }
@@ -45,6 +64,7 @@ MapContainer.defaultProps = {
     defaultCenter: { lat: 50.44663534442916, lng: 30.52750488940611 },
     defaultZoom: 11,
     onChange: () => {},
+    onChange: () => {},
 }
 
 MapContainer.propTypes = {
@@ -52,8 +72,13 @@ MapContainer.propTypes = {
         lat: pt.number.isRequired,
         lng: pt.number.isRequired,
     }),
+    center: pt.shape({
+        lat: pt.number.isRequired,
+        lng: pt.number.isRequired,
+    }),
     defaultZoom: pt.number,
     onChange: pt.func,
+    onClick: pt.func,
 }
 
 export default MapContainer
