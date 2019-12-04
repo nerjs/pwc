@@ -1,30 +1,42 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import pt from 'prop-types'
-// import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 import MapWrapper from './MapWrapper'
 import Controll from './controll'
+import { prepareCenter, prepareNumber, diffCenter } from './helpers'
 
-const MapContainer = ({ defaultCenter, defaultZoom, onChange }) => {
-    // const [cur, setCur] = useState({center: defaultCenter, zoom:})
+const MapContainer = ({ center: innerCenter, defaultCenter, defaultZoom, onChange }) => {
+    const handlerChange = useCallback(
+        (_, { center, zoom }) => {
+            if (
+                !diffCenter(
+                    {
+                        lat: prepareNumber(center.lat()),
+                        lng: prepareNumber(center.lng()),
+                    },
+                    prepareCenter(innerCenter),
+                )
+            )
+                return
 
-    const handlerChange = useCallback((_, { center, zoom }) => {
-        onChange({
-            center: {
-                lat: center.lat(),
-                lng: center.lng(),
-            },
-            zoom,
-        })
-    })
+            onChange({
+                center: {
+                    lat: prepareNumber(center.lat()),
+                    lng: prepareNumber(center.lng()),
+                },
+                zoom,
+            })
+        },
+        [innerCenter],
+    )
 
     return (
         <MapWrapper
-            initialCenter={defaultCenter}
+            initialCenter={defaultCenter || innerCenter}
             zoom={defaultZoom}
             onBounds_changed={handlerChange}
             onZoom_changed={handlerChange}
         >
-            <Controll />
+            <Controll center={innerCenter} />
         </MapWrapper>
     )
 }
