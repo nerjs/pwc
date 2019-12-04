@@ -21,6 +21,7 @@ const Input = styled.input`
     width: 100%;
     font-size: 16px;
     padding: 3px 5px;
+    box-shadow: none;
 `
 
 const TextField = ({ name, label, type = 'text', ...props }) => {
@@ -32,7 +33,7 @@ const TextField = ({ name, label, type = 'text', ...props }) => {
                 {label}
                 {touched && error ? ` | ${error}` : ''}
             </Label>
-            <Input {...inputProps} type={type} />
+            <Input {...inputProps} value={inputProps.value || ''} type={type} />
         </FieldWrap>
     )
 }
