@@ -1,16 +1,12 @@
 import { useState, useEffect } from 'react'
-import useMountedState from 'react-use/lib/useMountedState'
 
-const loadedScripts = new Map()
-const errorsScripts = new Map()
-const waitingScripts = new Map()
 const loadedFiles = new Map()
 const errorsFiles = new Map()
 const waitingFiles = new Map()
 
 const createFile = ({ url, tag, attr }) => {
     const file = document.createElement(tag)
-    script[attr] = url
+    file[attr] = url
 
     return new Promise((resolve, reject) => {
         file.onload = () => resolve(file)

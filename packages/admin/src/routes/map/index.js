@@ -1,14 +1,16 @@
 import React from 'react'
 import MapContainer from './container'
-import Map from '@comp/map/index'
 import useRoutePosition from '@hooks/useRoutePosition'
+import { MapProvider, MapComponent } from '@comp/map'
 
 const MapRoute = () => {
     const { center, zoom, changePos } = useRoutePosition()
 
     return (
         <MapContainer>
-            <Map defaultCenter={center} defaultZoom={zoom} onChange={changePos} />
+            <MapProvider>
+                <MapComponent defaultCenter={center} defaultZoom={zoom} onChange={changePos} />
+            </MapProvider>
         </MapContainer>
     )
 }

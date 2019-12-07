@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import styled from 'styled-components'
-import Map from '@comp/map'
 import { AddMarker } from '@comp/marker'
+import { MapComponent } from '@comp/map'
 
 const Container = styled.div`
     position: relative;
@@ -99,10 +99,15 @@ const MapInfoBlock = ({ value, setValue }) => {
 
     return (
         <Container className="qwerty">
-            <Map onClick={setValue} onChange={handleChange} {...mapProps} onReady={handleReady}>
+            <MapComponent
+                onClick={setValue}
+                onChange={handleChange}
+                {...mapProps}
+                onReady={handleReady}
+            >
                 <AddMarker {...value} />
                 {!visible && moved && <MarkerBlock {...value} />}
-            </Map>
+            </MapComponent>
         </Container>
     )
 }
