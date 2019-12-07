@@ -10,6 +10,7 @@ const MapContainer = ({
     defaultZoom,
     onChange,
     onClick,
+    onReady,
     children,
 }) => {
     const handlerChange = useCallback(
@@ -58,7 +59,7 @@ const MapContainer = ({
             onZoom_changed={handlerChange}
             onClick={handlerClick}
         >
-            <Controll center={innerCenter} />
+            <Controll center={innerCenter} onReady={onReady} />
             {children || null}
         </MapWrapper>
     )
@@ -68,7 +69,7 @@ MapContainer.defaultProps = {
     defaultCenter: { lat: 50.44663534442916, lng: 30.52750488940611 },
     defaultZoom: 11,
     onChange: () => {},
-    onChange: () => {},
+    onClick: () => {},
 }
 
 MapContainer.propTypes = {
@@ -83,6 +84,7 @@ MapContainer.propTypes = {
     defaultZoom: pt.number,
     onChange: pt.func,
     onClick: pt.func,
+    onReady: pt.func,
 }
 
 export default MapContainer
