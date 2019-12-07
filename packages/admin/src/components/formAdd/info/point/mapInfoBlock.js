@@ -8,6 +8,7 @@ const Container = styled.div`
     max-width: 100%;
     width: 100%;
     height: 30vw;
+    cursor: pointer;
 `
 
 const MarkerBlockContainer = styled.div`
@@ -89,9 +90,16 @@ const MapInfoBlock = ({ value, setValue }) => {
         }
     }, [])
 
+    const handleReady = useCallback(map => {
+        map.setOptions({
+            draggableCursor: 'pointer',
+            // draggingCursor: 'pointer',
+        })
+    })
+
     return (
         <Container className="qwerty">
-            <Map onClick={setValue} onChange={handleChange} {...mapProps}>
+            <Map onClick={setValue} onChange={handleChange} {...mapProps} onReady={handleReady}>
                 <AddMarker {...value} />
                 {!visible && moved && <MarkerBlock {...value} />}
             </Map>
