@@ -72,10 +72,26 @@ const useMoveCenter = value => {
 
 const MapInfoBlock = ({ value, setValue }) => {
     const { visible, moved, handleChange } = useMoveCenter(value)
+    const [mapProps, setMapProps] = useState({})
+
+    useEffect(() => {
+        if (
+            value &&
+            value.lat &&
+            value.lng &&
+            typeof value.lat === 'number' &&
+            typeof value.lng === 'number'
+        ) {
+            setMapProps({
+                defaultCenter: { ...value },
+                defaultZoom: 15,
+            })
+        }
+    }, [])
 
     return (
         <Container className="qwerty">
-            <Map onClick={setValue} onChange={handleChange}>
+            <Map onClick={setValue} onChange={handleChange} {...mapProps}>
                 <AddMarker {...value} />
                 {!visible && moved && <MarkerBlock {...value} />}
             </Map>
