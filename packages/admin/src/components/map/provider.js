@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { GoogleApiWrapper } from 'google-maps-react'
 
-export const MapContext = createContext()
+export const MapContext = createContext({})
 
 const MapProvider = ({ children, google, loaded }) => {
     const [googleState, setGoogle] = useState(null)
