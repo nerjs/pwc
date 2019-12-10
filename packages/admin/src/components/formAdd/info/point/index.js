@@ -9,7 +9,7 @@ const PointBlockContainer = styled.div``
 const PointInfoBlock = ({ value, setValue }) => {
     return (
         <PointBlockContainer>
-            <MapProvider>
+            <MapProvider libraries={['places']}>
                 <Places value={value} setValue={setValue} />
                 <MapInfoBlock value={value} setValue={setValue} />
             </MapProvider>

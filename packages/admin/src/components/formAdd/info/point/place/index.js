@@ -1,8 +1,10 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import styled from 'styled-components'
 import InputPlace from './input'
 import TextPlace from './text'
 import SwitcherPlace from './switcher'
+import usePlaceInfo from './usePlaceInfo'
+import InformContent from './InformContent'
 
 const PlacesContainer = styled.div`
     width: 100%;
@@ -22,24 +24,31 @@ const SwitchContainer = styled.div`
     text-align: center;
 `
 
-const Places = ({ value, setValue }) => {
-    const [isInput, setSwitchInput] = useState(true)
-
-    const handlerSwitch = useCallback(() => {
-        setSwitchInput(ii => !ii)
-    }, [setSwitchInput])
+const Places = props => {
+    const {
+        loading,
+        point,
+        address,
+        isInput,
+        handleSwitch,
+        handleSetPlace,
+        handleTextClick,
+    } = usePlaceInfo(props)
 
     return (
         <PlacesContainer>
             <InformContainer>
-                {isInput ? (
-                    <InputPlace value={value} setValue={setValue} />
-                ) : (
-                    <TextPlace value={setValue} />
-                )}
+                <InformContent
+                    loading={loading}
+                    isInput={isInput}
+                    point={point}
+                    address={address}
+                    handleSetPlace={handleSetPlace}
+                    handleTextClick={handleTextClick}
+                />
             </InformContainer>
             <SwitchContainer>
-                <SwitcherPlace isInput={isInput} onSwitch={handlerSwitch} />
+                <SwitcherPlace loading={loading} isInput={isInput} onSwitch={handleSwitch} />
             </SwitchContainer>
         </PlacesContainer>
     )

@@ -17,13 +17,8 @@ const Text = styled.div`
     text-overflow: ellipsis;
 `
 
-const TextPlace = () => {
-    return (
-        <Text>
-            text csrsrrf sefrf aded adcsef yufykug gyjgku ukyygkgy gygkuy sefcsf
-            jhjgydrtDTRhghvjRFtyj FKJYFKTFRU tfyt
-        </Text>
-    )
+const TextPlace = ({ onClick, value }) => {
+    return <Text onClick={onClick}>{value}</Text>
 }
 
 export default TextPlace
