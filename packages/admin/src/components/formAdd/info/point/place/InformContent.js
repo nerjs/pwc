@@ -30,11 +30,25 @@ const WaitInformContent = () => {
     return <StyledWaitInformContent>{waitTxt}</StyledWaitInformContent>
 }
 
-const InformContent = ({ loading, isInput, point, address, handleSetPlace, handleTextClick }) => {
+const InformContent = ({
+    loading,
+    isInput,
+    point,
+    address,
+    handleSetPlace,
+    handleTextClick,
+    inputRef,
+    addrList,
+}) => {
     if (loading) return <WaitInformContent />
 
     return isInput ? (
-        <InputPlace point={point} setPlace={handleSetPlace} />
+        <InputPlace
+            point={point}
+            setPlacePoint={handleSetPlace}
+            addrList={addrList}
+            ref={inputRef}
+        />
     ) : (
         <TextPlace onClick={handleTextClick} value={address} />
     )

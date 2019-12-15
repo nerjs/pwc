@@ -8,6 +8,7 @@ const Container = styled.div`
     max-width: 100%;
     width: 100%;
     height: 30vw;
+    z-index: 1;
     cursor: pointer;
 `
 
@@ -32,7 +33,7 @@ const MarkerBlock = ({ lat, lng, map }) => {
 }
 
 const useMoveCenter = value => {
-    const [{ visible, moved }, setData] = useState({
+    const [{ visible, moved, lat, lng }, setData] = useState({
         lat: undefined,
         lng: undefined,
         visible: false,
@@ -65,6 +66,8 @@ const useMoveCenter = value => {
     )
 
     return {
+        lat,
+        lng,
         visible,
         moved,
         handleChange,
@@ -72,7 +75,7 @@ const useMoveCenter = value => {
 }
 
 const MapInfoBlock = ({ value, setValue }) => {
-    const { visible, moved, handleChange } = useMoveCenter(value)
+    const { visible, moved, lat, lng, handleChange } = useMoveCenter(value)
     const [mapProps, setMapProps] = useState({})
 
     useEffect(() => {
@@ -90,12 +93,18 @@ const MapInfoBlock = ({ value, setValue }) => {
         }
     }, [])
 
+    useEffect(() => {
+        if (!lat || !lng) return
+
+        setMapProps(mp => ({ ...mp, center: { lat, lng } }))
+    }, [lat, lng, setMapProps])
+
     const handleReady = useCallback(map => {
         map.setOptions({
             draggableCursor: 'pointer',
             // draggingCursor: 'pointer',
         })
-    })
+    }, [])
 
     return (
         <Container className="qwerty">

@@ -1,12 +1,12 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import InputPlace from './input'
-import TextPlace from './text'
 import SwitcherPlace from './switcher'
 import usePlaceInfo from './usePlaceInfo'
 import InformContent from './InformContent'
 
 const PlacesContainer = styled.div`
+    position: relative;
+    z-index: 2;
     width: 100%;
     max-width: 650px;
     height: 40px;
@@ -33,6 +33,8 @@ const Places = props => {
         handleSwitch,
         handleSetPlace,
         handleTextClick,
+        inputRef,
+        addrList,
     } = usePlaceInfo(props)
 
     return (
@@ -45,6 +47,8 @@ const Places = props => {
                     address={address}
                     handleSetPlace={handleSetPlace}
                     handleTextClick={handleTextClick}
+                    inputRef={inputRef}
+                    addrList={addrList}
                 />
             </InformContainer>
             <SwitchContainer>

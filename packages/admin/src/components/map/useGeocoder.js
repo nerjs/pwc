@@ -25,7 +25,7 @@ export default ({ lat, lng }) => {
             const location = new google.maps.LatLng({ lat, lng })
             const preparedLoc = prepareCenter({ lat: location.lat(), lng: location.lng() })
             geocoder.geocode({ location }, codes => {
-                if (!isMounted() || diffCenter(preparedLoc, { lat, lng })) return
+                if (!isMounted() || diffCenter(preparedLoc, prepareCenter({ lat, lng }))) return
                 setGeocodes(codes)
                 setLoading(false)
             })
