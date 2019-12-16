@@ -6,6 +6,7 @@ import HomeRoute from './routes/home'
 import MapRoute from './routes/map'
 import ListRoute from './routes/list'
 import AddRoute from './routes/add'
+import EditRoute from './routes/edit'
 
 const App = () => (
     <Wrappers>
@@ -15,6 +16,7 @@ const App = () => (
             <Route path="/map/:pos?/:showId?" component={MapRoute} />
             <Route path="/list" component={ListRoute} />
             <Route path="/add" component={AddRoute} />
+            <Route path="/edit/:id" component={EditRoute} />
         </Switch>
     </Wrappers>
 )
