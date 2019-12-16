@@ -33,7 +33,13 @@ const TextField = ({ name, label, type = 'text', ...props }) => {
                 {label}
                 {touched && error ? ` | ${error}` : ''}
             </Label>
-            <Input {...inputProps} value={inputProps.value || ''} type={type} />
+            <Input
+                {...inputProps}
+                value={inputProps.value || ''}
+                type={type}
+                min={-360}
+                max={360}
+            />
         </FieldWrap>
     )
 }

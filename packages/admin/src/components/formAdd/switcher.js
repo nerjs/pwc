@@ -27,6 +27,7 @@ export const useSwitcher = () => {
         data => {
             if (!status) return
             setValues({
+                ...values,
                 [status]: data,
             })
         },

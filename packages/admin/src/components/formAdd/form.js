@@ -15,8 +15,8 @@ const Form = () => {
                     <TextField name="title" label="title" />
                     <SwitcherWrapper name="point">
                         <PointContainer>
-                            <TextField name="point.lat" label=" geo lat" type="number" />
-                            <TextField name="point.lng" label="geo lng" type="number" />
+                            <TextField name="point.lat" label=" geo lat" />
+                            <TextField name="point.lng" label="geo lng" />
                         </PointContainer>
                     </SwitcherWrapper>
 

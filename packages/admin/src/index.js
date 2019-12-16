@@ -1,6 +1,5 @@
 import React from 'react'
 import reactDOM from 'react-dom'
-
 let App = null
 
 if (BUILD_TYPE === 'hot') {
