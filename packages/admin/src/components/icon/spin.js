@@ -13,12 +13,13 @@ const spin = keyframes`
     }
 `
 
-const SpinIcon = ({ className, duration, icon }) => (
+const SpinIcon = ({ className, duration, icon, size }) => (
     <AnimateIcon
         className={className}
         duration={duration}
         icon={icon || spinner}
         animation={spin}
+        size={size || 16}
     />
 )
 
