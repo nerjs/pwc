@@ -11,6 +11,7 @@ const HeaderBlock = styled.header`
     flex-wrap: nowrap;
     background-color: #fff;
     box-shadow: 0 2px 5px #575050c7;
+    z-index: 2;
 `
 
 export default HeaderBlock
