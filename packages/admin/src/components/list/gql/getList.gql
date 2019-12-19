@@ -1,0 +1,10 @@
+query($count:Int!, $offset:Int!){
+    listWebcams(count:$count, offset:$offset) {
+        count 
+        allCount
+        list {
+            id 
+            title
+        }
+    }
+}
