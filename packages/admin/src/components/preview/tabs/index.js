@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
+import propTypes from 'prop-types'
 import ButtonsTabs from './buttons'
 import BodyTabs from './body'
 
@@ -12,8 +13,8 @@ const TabsWrapper = styled.div`
 
 const tabs = ['map', 'origin', 'stream']
 
-const Tabs = () => {
-    const [active, setActive] = useState('map')
+const Tabs = ({ defTab, ...item }) => {
+    const [active, setActive] = useState(defTab)
 
     const handleChangeActive = useCallback(
         act => {
@@ -26,9 +27,17 @@ const Tabs = () => {
     return (
         <TabsWrapper>
             <ButtonsTabs active={active} changeActive={handleChangeActive} tabs={tabs} />
-            <BodyTabs active={active} />
+            <BodyTabs active={active} {...item} />
         </TabsWrapper>
     )
+}
+
+Tabs.defaultProps = {
+    defTab: tabs[0],
+}
+
+Tabs.propTypes = {
+    defTab: propTypes.oneOf(tabs),
 }
 
 export default Tabs
