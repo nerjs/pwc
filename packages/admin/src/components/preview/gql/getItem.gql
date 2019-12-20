@@ -1,0 +1,17 @@
+query($id: ID!) {
+    previewItem:getWebcam(id: $id) {
+        id
+        point {
+            lat
+            lng
+        }
+        title
+        origin {
+            title
+            url
+        }
+        stream
+        createdAt
+        updatedAt
+    }
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useQuery } from '@apollo/react-hooks'
 
@@ -15,13 +15,18 @@ const ListWrapper = styled.div`
     position: relative;
 `
 
-const ListItems = ({ setActiveId, activeId }) => {
-    const { loading, error, data } = useQuery(getListGql, {
+const ListItems = ({ setActiveId, activeId, removedId }) => {
+    const { loading, error, data, variables, refetch } = useQuery(getListGql, {
         variables: {
             count: 40,
             offset: 0,
         },
     })
+
+    useEffect(() => {
+        if (!removedId || error || loading) return
+        refetch(variables)
+    }, [removedId])
 
     if (loading) return <ListLoading />
     if (error || !data) return <AlertError txt={(error && error.message) || 'Empty result'} />

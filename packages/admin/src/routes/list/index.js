@@ -17,14 +17,15 @@ const ListCol = styled.div`
 
 const ListRoute = () => {
     const [activeId, setActiveId] = useState(null)
+    const [removedId, setRemovedId] = useState(null)
 
     return (
         <ListWrapper>
             <ListCol>
-                <ListItems activeId={activeId} setActiveId={setActiveId} />
+                <ListItems activeId={activeId} setActiveId={setActiveId} removedId={removedId} />
             </ListCol>
             <ListCol>
-                <PreviewItem id={activeId} />
+                <PreviewItem id={activeId} onRemove={setRemovedId} />
             </ListCol>
         </ListWrapper>
     )
