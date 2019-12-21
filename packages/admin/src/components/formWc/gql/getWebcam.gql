@@ -1,9 +1,7 @@
 #import "@lib/fragments/webcamDetails.gql"
 
 query($id: ID!) {
-    previewItem:getWebcam(id: $id) {
+    getForForm:getWebcam(id: $id) {
         ...WebcamDetails
-        createdAt
-        updatedAt
     }
 }

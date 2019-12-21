@@ -1,0 +1,13 @@
+fragment WebcamDetails on Webcam {
+    id 
+    title
+    point {
+        lat 
+        lng
+    }
+    origin {
+        title
+        url
+    }
+    stream
+}
