@@ -5,6 +5,16 @@ import { prepareCenter, prepareNumber, diffCenter } from './helpers/helpers'
 import useGoogleMap from './useGoogleMap'
 import { Map as GoogleMapReact } from 'google-maps-react'
 
+const getOtherOptions = isStatic => {
+    if (!isStatic) return {}
+
+    return {
+        disableDefaultUI: true,
+        zoomControl: true,
+        draggable: false,
+    }
+}
+
 const GoogleMap = ({
     center: innerCenter,
     defaultCenter,
@@ -13,6 +23,7 @@ const GoogleMap = ({
     onClick,
     onReady,
     children,
+    isStatic,
 }) => {
     const { loading, loaded, google } = useGoogleMap()
 
@@ -64,6 +75,7 @@ const GoogleMap = ({
             onBounds_changed={handlerChange}
             onZoom_changed={handlerChange}
             onClick={handlerClick}
+            {...getOtherOptions(isStatic, google)}
         >
             <Controll center={innerCenter} onReady={onReady} />
             {children || null}
