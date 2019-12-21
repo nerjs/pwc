@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Microlink from '@microlink/react'
 import AlerError from '../../../alert/error'
+import StyledLink from './link'
 
 const TabBodyOriginContainer = styled.div``
 
@@ -10,13 +11,6 @@ const Title = styled.h2`
     text-align: center;
     margin: 3px 5px 5px;
     padding: 3px 10px;
-`
-const Link = styled.a`
-    font-size: 16px;
-    text-align: center;
-    color: #406805;
-    display: block;
-    margin: 3px auto 5px;
 `
 
 const TabBodyOriginPreview = styled(Microlink)`
@@ -30,9 +24,7 @@ const TabBodyOrigin = ({ origin: { title, url } }) => {
             {title && <Title>{title}</Title>}
             {url && (
                 <>
-                    <Link href={url} target="_blank">
-                        {url}
-                    </Link>
+                    <StyledLink url={url} center />
                     <TabBodyOriginPreview url={url} />
                 </>
             )}

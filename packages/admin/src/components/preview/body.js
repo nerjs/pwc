@@ -19,7 +19,7 @@ const BodyPreview = props => {
                 point={item.point}
                 deleteItem={deleteItem}
             />
-            <Tabs {...item} defTab="map" />
+            <Tabs {...item} defTab="stream" />
         </>
     )
 }
