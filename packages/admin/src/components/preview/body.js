@@ -5,7 +5,7 @@ import TitlePreview from './title'
 import Tabs from './tabs'
 import usePreview from './usePreview'
 
-const BodyPreview = props => {
+const BodyPreview = ({ defTab, ...props }) => {
     const { loading, error, item, deleteItem } = usePreview(props)
 
     if (loading) return <PreviewLoading />
@@ -19,7 +19,7 @@ const BodyPreview = props => {
                 point={item.point}
                 deleteItem={deleteItem}
             />
-            <Tabs {...item} defTab="stream" />
+            <Tabs {...item} defTab={defTab || 'map'} />
         </>
     )
 }
