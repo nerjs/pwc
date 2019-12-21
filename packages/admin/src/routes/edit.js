@@ -1,7 +1,12 @@
 import React from 'react'
+import { EditForm } from '@comp/formWc'
 
-const EditRoute = ({ match }) => {
-    return <pre>{JSON.stringify(match, null, 2)}</pre>
+const EditRoute = ({
+    match: {
+        params: { id },
+    },
+}) => {
+    return <EditForm id={id} />
 }
 
 export default EditRoute

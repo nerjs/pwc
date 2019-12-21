@@ -1,12 +1,8 @@
 import React from 'react'
-import AddPointForm from '@comp/formAdd'
+import { AddForm } from '@comp/formWc'
 
 const AddRoute = () => {
-    return (
-        <div>
-            <AddPointForm />
-        </div>
-    )
+    return <AddForm />
 }
 
 export default AddRoute
