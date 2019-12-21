@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Microlink from '@microlink/react'
+import AlerError from '../../../alert/error'
 
 const TabBodyOriginContainer = styled.div``
 
@@ -17,8 +18,6 @@ const Link = styled.a`
     display: block;
     margin: 3px auto 5px;
 `
-
-const NotUrl = styled.div``
 
 const TabBodyOriginPreview = styled(Microlink)`
     width: 100%;
@@ -37,7 +36,7 @@ const TabBodyOrigin = ({ origin: { title, url } }) => {
                     <TabBodyOriginPreview url={url} />
                 </>
             )}
-            {!url && <NotUrl>No url</NotUrl>}
+            {!url && <AlerError txt="No url" />}
         </TabBodyOriginContainer>
     )
 }
