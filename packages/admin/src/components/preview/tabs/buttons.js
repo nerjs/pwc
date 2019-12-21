@@ -5,6 +5,8 @@ const ButtonsTabsContainer = styled.div`
     display: flex;
     width: 100%;
     margin: 4px auto 2px;
+    z-index: 1;
+    position: relative;
 `
 
 const activeStyle = css`
