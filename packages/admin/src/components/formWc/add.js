@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import webcamInputSchema from '@pw/validate/webcam_input'
 import AddForm from './form'
 import SubmitBtn from './utils/btn'
-import addWebcamGql from './utils/addWebcam.gql'
+import addWebcamGql from './gql/addWebcam.gql'
 import { parseValidationError } from '@lib/parseError'
 
 const initialValues = {
