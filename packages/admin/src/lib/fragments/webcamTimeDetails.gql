@@ -1,0 +1,4 @@
+fragment WebcamTimeDetails on Webcam {
+    createdAt
+    updatedAt
+}

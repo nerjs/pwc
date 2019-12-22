@@ -1,3 +1,7 @@
+#import "@lib/fragments/webcamTimeDetails.gql"
+
 mutation($id:ID!, $input:WebcamInput!){
-  editWebcam(id:$id, input:$input) 
+  editWebcam(id:$id, input:$input) {
+    ...WebcamTimeDetails
+  }
 }

@@ -35,7 +35,7 @@ module.exports = {
             const webcam = await Webcam.findByIdAndUpdate(id, input, { new: true })
             if (!webcam) throw new NotFoundItemError('webcam', `Webcam [ID:${id}] not found!`)
 
-            return true
+            return webcam
         },
 
         deleteWebcam: async (_, { id }) => {

@@ -8,7 +8,7 @@ const Btn = styled.button`
     margin-left: 20px;
     background-color: #fff;
     font-size: 20px;
-    padding: 10px 20px;
+    padding: 5px 20px;
     text-align: center;
     border-radius: 5px;
     border: none;
@@ -29,12 +29,12 @@ const Btn = styled.button`
     }
 `
 
-const SubmitBtn = () => {
-    const { isSubmitting, errors, ...hh } = useFormikContext()
+const SubmitBtn = ({ title }) => {
+    const { isSubmitting, errors } = useFormikContext()
 
     return (
         <Btn disabled={isSubmitting || Object.keys(errors).length > 0} type="submit">
-            Submit
+            {title}
         </Btn>
     )
 }

@@ -1,7 +1,9 @@
 #import "@lib/fragments/webcamDetails.gql"
+#import "@lib/fragments/webcamTimeDetails.gql"
 
 query($id: ID!) {
     getForForm:getWebcam(id: $id) {
         ...WebcamDetails
+        ...WebcamTimeDetails
     }
 }

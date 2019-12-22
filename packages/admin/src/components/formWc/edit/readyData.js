@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Formik, Form } from 'formik'
 import styled from 'styled-components'
 import editWebcamGql from '../gql/editWebcam.gql'
@@ -6,8 +6,9 @@ import { useMutation } from '@apollo/react-hooks'
 
 import webcamInputSchema from '@pw/validate/webcam_input'
 import EditForm from '../form'
-import SubmitBtn from '../utils/btn'
 import { parseValidationError } from '@lib/parseError'
+import EditDetails from './details'
+import EditControls from './controls'
 
 const getInitValues = ({
     title,
@@ -16,8 +17,9 @@ const getInitValues = ({
     stream,
 }) => ({ title, point: { lat, lng }, origin: { title: originTitle, url }, stream })
 
-const EditFormReadyData = ({ id, ...props }) => {
+const EditFormReadyData = ({ id, createdAt, updatedAt, ...props }) => {
     const [editWebcam] = useMutation(editWebcamGql, { errorPolicy: 'all', variables: { id } })
+    const [currentUpdatedAt, setCurrentUpdatedAt] = useState(updatedAt)
 
     const handleSubmit = useCallback(
         async (values, { setFieldError, setSubmitting, setStatus, resetForm }) => {
@@ -27,7 +29,10 @@ const EditFormReadyData = ({ id, ...props }) => {
                     variables: { input: values },
                 })
 
-                if (data && data.editWebcam) setStatus('Success saved!')
+                if (data && data.editWebcam) {
+                    setStatus('Success saved!')
+                    setCurrentUpdatedAt(data.editWebcam.updatedAt)
+                }
             } catch (e) {
                 const errors = parseValidationError(e, 'addWebcam')
 
@@ -37,7 +42,7 @@ const EditFormReadyData = ({ id, ...props }) => {
             }
             setSubmitting(false)
         },
-        [editWebcam],
+        [editWebcam, setCurrentUpdatedAt],
     )
 
     return (
@@ -48,8 +53,9 @@ const EditFormReadyData = ({ id, ...props }) => {
             validateOnMount
         >
             <Form>
+                <EditDetails id={id} createdAt={createdAt} updatedAt={currentUpdatedAt} />
                 <EditForm />
-                <SubmitBtn />
+                <EditControls id={id} point={props.point} />
             </Form>
         </Formik>
     )

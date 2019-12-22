@@ -32,7 +32,7 @@ type Query {
 
 type Mutation {
     addWebcam(input: WebcamInput!): Webcam!
-    editWebcam(id: ID!, input: WebcamInput!): Boolean!
+    editWebcam(id: ID!, input: WebcamInput!): Webcam!
     deleteWebcam(id:ID!): Boolean!
 }
 

@@ -58,7 +58,7 @@ const AddPointForm = () => {
         >
             <Form>
                 <AddForm />
-                <SubmitBtn />
+                <SubmitBtn title="Add" />
             </Form>
         </Formik>
     )
