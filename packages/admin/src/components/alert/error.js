@@ -1,26 +1,15 @@
-import React from 'react'
 import styled from 'styled-components'
+import Alert from './alert'
+import ArertLink from './link'
 
-const AlertContainer = styled.div`
-    margin: 10px 20px;
-    padding: 12px 20px;
-    border: 1px solid #f5c6cb;
-    border-radius: 8px;
+const AlertError = styled(Alert)`
+    border-color: #f5c6cb;
     color: #721c24;
-    font-size: 16px;
     background-color: #f8d7da;
+
+    ${ArertLink} {
+        color: #8a1823;
+    }
 `
-
-const AlertRow = styled.div``
-
-const AlertError = ({ txt }) => {
-    return (
-        <AlertContainer>
-            {txt.split('\n').map(t => (
-                <AlertRow key={t}>{t}</AlertRow>
-            ))}
-        </AlertContainer>
-    )
-}
 
 export default AlertError
