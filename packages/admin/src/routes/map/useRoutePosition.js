@@ -4,7 +4,7 @@ import { useParams, useHistory, useLocation } from 'react-router-dom'
 export default () => {
     const location = useLocation()
     const history = useHistory()
-    const { pos } = useParams()
+    const { pos, id } = useParams()
 
     let mounted = false
 
@@ -36,5 +36,6 @@ export default () => {
         center: !isNaN(lat) && !isNaN(lng) ? { lat, lng } : undefined,
         zoom: !isNaN(zoom) && zoom > 1 && zoom < 15 ? zoom : undefined,
         changePos,
+        id,
     }
 }

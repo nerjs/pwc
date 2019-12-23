@@ -1,17 +1,28 @@
 import React from 'react'
-import MapContainer from './container'
-import useRoutePosition from '@hooks/useRoutePosition'
+import { MapContainer, CoreContainer, PreviewContainer } from './containers'
+import useRoutePosition from './useRoutePosition'
 import { MapProvider, MapComponent } from '@comp/map'
+import GeoPreview from '../../components/geoPreview'
+import GeoMarkers from '../../components/geoMarkers'
 
 const MapRoute = () => {
-    const { center, zoom, changePos } = useRoutePosition()
+    const { center, zoom, changePos, id } = useRoutePosition()
 
     return (
-        <MapContainer>
-            <MapProvider>
-                <MapComponent defaultCenter={center} defaultZoom={zoom} onChange={changePos} />
-            </MapProvider>
-        </MapContainer>
+        <MapProvider>
+            <CoreContainer>
+                {id && (
+                    <PreviewContainer>
+                        <GeoPreview id={id} />
+                    </PreviewContainer>
+                )}
+                <MapContainer withPreview={!!id}>
+                    <MapComponent defaultCenter={center} defaultZoom={zoom} onChange={changePos}>
+                        <GeoMarkers {...center} />
+                    </MapComponent>
+                </MapContainer>
+            </CoreContainer>
+        </MapProvider>
     )
 }
 

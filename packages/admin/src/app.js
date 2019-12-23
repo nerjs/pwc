@@ -13,7 +13,7 @@ const App = () => (
         <Header />
         <Switch>
             <Route path="/" component={HomeRoute} exact />
-            <Route path="/map/:pos?/:showId?" component={MapRoute} />
+            <Route path="/map/:pos?/:id?" component={MapRoute} />
             <Route path="/list" component={ListRoute} />
             <Route path="/add" component={AddRoute} />
             <Route path="/edit/:id" component={EditRoute} />
