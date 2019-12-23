@@ -37,8 +37,7 @@ const TextField = ({ name, label, type = 'text', ...props }) => {
                 {...inputProps}
                 value={inputProps.value || ''}
                 type={type}
-                min={-360}
-                max={360}
+                step={type === 'number' ? 0.0000001 : undefined}
             />
         </FieldWrap>
     )
