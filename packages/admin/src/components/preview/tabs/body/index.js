@@ -18,7 +18,7 @@ const tabList = {
 const BodyTabs = ({ active, ...props }) => {
     if (!active) return null
 
-    const Content = tabList[active] || (() => <AlertError txt="Invalid active tab" />)
+    const Content = tabList[active] || (() => <AlertError>Invalid active tab</AlertError>)
     return (
         <BodyTabsContainer>
             <Content {...props} />

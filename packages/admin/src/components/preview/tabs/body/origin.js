@@ -28,7 +28,7 @@ const TabBodyOrigin = ({ origin: { title, url } }) => {
                     <TabBodyOriginPreview url={url} />
                 </>
             )}
-            {!url && <AlerError txt="No url" />}
+            {!url && <AlerError>No url</AlerError>}
         </TabBodyOriginContainer>
     )
 }

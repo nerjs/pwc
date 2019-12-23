@@ -2,7 +2,6 @@ import { useState, useCallback, useEffect } from 'react'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import getItemGql from './gql/getItem.gql'
 import deleteItemGql from './gql/deleteItem.gql'
-import rf from '../list/gql/getList.gql'
 
 const getError = (removedId, qe, de, qd, dd, l) => {
     if (removedId) return `Item ID:${removedId} was deleted!`

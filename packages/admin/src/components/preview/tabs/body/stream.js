@@ -16,8 +16,8 @@ const Video = styled.video`
 `
 
 const TabBodyStream = ({ stream }) => {
-    if (!stream) return <AlertError txt="Stream is empty" />
-    console.log(stream)
+    if (!stream) return <AlertError>Stream is empty</AlertError>
+
     return (
         <TabBodyStreamContainer>
             <StyledLink url={stream} center />

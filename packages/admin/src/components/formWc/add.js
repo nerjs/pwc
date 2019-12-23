@@ -42,7 +42,7 @@ const AddPointForm = () => {
         } catch (e) {
             const errors = parseValidationError(e, 'addWebcam')
 
-            if (!errors) return setStatus(e.message)
+            if (!errors) return setStatus({ type: 'error', message: e.message })
 
             errors.forEach(({ path, message }) => setFieldError(path, message))
             setSubmitting(false)

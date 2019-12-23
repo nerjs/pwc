@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 import PreviewLoading from './loading'
 import AlertError from '../alert/error'
 import TitlePreview from './title'
@@ -9,7 +9,7 @@ const BodyPreview = ({ defTab, ...props }) => {
     const { loading, error, item, deleteItem } = usePreview(props)
 
     if (loading) return <PreviewLoading />
-    if (error) return <AlertError txt={error} />
+    if (error) return <AlertError>{error}</AlertError>
 
     return (
         <>
