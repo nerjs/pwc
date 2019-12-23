@@ -16,6 +16,7 @@ export default ({ id, onRemove }) => {
 
     const { loading: queryLoading, error: queryError, data: queryData } = useQuery(getItemGql, {
         variables: { id },
+        fetchPolicy: 'cache-and-network',
     })
 
     const [deleteItem, { loading: deleteLoading, called, data: deleteData, ...f }] = useMutation(

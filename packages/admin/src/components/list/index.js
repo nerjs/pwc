@@ -21,6 +21,7 @@ const ListItems = ({ setActiveId, activeId, removedId }) => {
             count: 40,
             offset: 0,
         },
+        fetchPolicy: 'cache-and-network',
     })
 
     useEffect(() => {
