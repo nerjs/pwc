@@ -30,7 +30,7 @@ const AddPointForm = () => {
         try {
             const {
                 data: {
-                    addWebcam: { id, point },
+                    addWebcam: { id },
                 },
             } = await addWebcam({
                 variables: { input: values },
@@ -38,7 +38,7 @@ const AddPointForm = () => {
 
             resetForm()
 
-            history.push(`/map/${point.lat}:${point.lng}:12/${id}`)
+            history.push(`/edit/${id}`)
         } catch (e) {
             const errors = parseValidationError(e, 'addWebcam')
 
