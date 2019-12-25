@@ -4,6 +4,7 @@ import Controll from './helpers/controll'
 import { prepareCenter, prepareNumber, diffCenter } from './helpers/helpers'
 import useGoogleMap from './useGoogleMap'
 import { Map as GoogleMapReact } from 'google-maps-react'
+import InfoMap from './helpers/infoMap'
 
 const getOtherOptions = isStatic => {
     if (!isStatic) return {}
@@ -29,30 +30,13 @@ const GoogleMap = ({
 
     const handlerChange = useCallback(
         (_, map) => {
-            const { center, zoom } = map
-            if (
-                !diffCenter(
-                    {
-                        lat: prepareNumber(center.lat()),
-                        lng: prepareNumber(center.lng()),
-                    },
-                    prepareCenter(innerCenter),
-                )
-            )
-                return
+            const info = new InfoMap(google.maps.geometry, map)
 
-            onChange(
-                {
-                    center: {
-                        lat: prepareNumber(center.lat()),
-                        lng: prepareNumber(center.lng()),
-                    },
-                    zoom,
-                },
-                map,
-            )
+            if (!info.diffCenter(innerCenter)) return
+
+            onChange(info, map)
         },
-        [innerCenter],
+        [innerCenter, google],
     )
 
     const handlerClick = useCallback(

@@ -25,6 +25,6 @@ const MapProvider = ({ children, google, loaded }) => {
 export default GoogleApiWrapper(({ libraries }) => {
     return {
         apiKey: process.env.GOOGLE_API_KEY,
-        libraries,
+        libraries: [...(libraries || []), 'places', 'geometry'],
     }
 })(MapProvider)
