@@ -27,6 +27,7 @@ type ListResultWebcams {
 
 type Query {
     getWebcam(id: ID!): Webcam
+    getListByPoint(point: PointInput!, distance: Number!): [Webcam!]!
     listWebcams(count:Int, offset:Int): ListResultWebcams!
 }
 

@@ -15,11 +15,18 @@ module.exports = {
             const list = await Webcam.find()
                 .skip(offset)
                 .limit(count)
+
             return {
                 count: list.length,
                 allCount,
                 list,
             }
+        },
+
+        getListByPoint: async (_, { point, distance }) => {
+            const list = await Webcam.findByPoint(point, distance)
+
+            return list
         },
     },
     Mutation: {
