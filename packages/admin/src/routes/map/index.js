@@ -6,7 +6,7 @@ import GeoPreview from '../../components/geoPreview'
 import GeoMarkers from '../../components/geoMarkers'
 
 const MapRoute = () => {
-    const { center, zoom, changePos, id } = useRoutePosition()
+    const { center, zoom, changePos, id, distance } = useRoutePosition()
 
     return (
         <MapProvider>
@@ -18,7 +18,7 @@ const MapRoute = () => {
                 )}
                 <MapContainer withPreview={!!id}>
                     <MapComponent defaultCenter={center} defaultZoom={zoom} onChange={changePos}>
-                        <GeoMarkers {...center} />
+                        <GeoMarkers {...center} distance={parseInt(distance, 10)} />
                     </MapComponent>
                 </MapContainer>
             </CoreContainer>
