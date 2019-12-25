@@ -7,12 +7,11 @@ import { remove } from 'react-icons-kit/fa/remove'
 import { mapO } from 'react-icons-kit/fa/mapO'
 import Icon from '../icon'
 
-const IconsWrapper = styled.div``
-
 const buttonStyle = css`
     margin: 0 3px;
     color: #0000ee;
     cursor: pointer;
+    transition: 0.3s;
 
     & svg {
         width: 18px;
@@ -29,6 +28,22 @@ const OuterLink = styled.a``
 const Remove = styled.span`
     ${buttonStyle}
     color: #721c24;
+`
+
+const IconsWrapper = styled.div`
+    opacity: 0.5;
+    transition: 0.3s;
+
+    &:hover {
+        opacity: 1;
+
+        ${StyledLink},
+        ${OuterLink},
+        ${Remove} {
+            margin: 0 2px;
+            padding: 0 1px;
+        }
+    }
 `
 
 const ControlsPreview = ({ id, point: { lat, lng }, deleteItem }) => {

@@ -1,8 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Preview from '@comp/preview'
+import GeoPreviewWrap from './wrap'
 
-const GeoPreview = ({ id, center }) => {
-    return <Link to={`/map/${center.lat}:${center.lng}:11`}>close</Link>
+const GeoPreview = ({ id }) => {
+    return (
+        <GeoPreviewWrap id={id}>
+            <Preview defTab="stream" id={id} />
+        </GeoPreviewWrap>
+    )
 }
 
 export default GeoPreview

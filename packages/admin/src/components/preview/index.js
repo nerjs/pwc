@@ -9,14 +9,14 @@ const PreviewContainer = styled.div`
     position: relative;
 `
 
-const PreviewItem = ({ id, onRemove }) => {
+const PreviewItem = ({ id, defTab, onRemove }) => {
     return (
         <Sticky full>
             <PreviewContainer>
                 {id && (
                     <>
                         <IdPreview id={id} />
-                        <BodyPreview id={id} onRemove={onRemove} />
+                        <BodyPreview id={id} defTab={defTab} onRemove={onRemove} />
                     </>
                 )}
             </PreviewContainer>

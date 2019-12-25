@@ -22,10 +22,11 @@ const Sticky = ({ children, full }) => {
     useEffect(() => {
         if (!refCont.current) return
         const el = refCont.current.parentElement || refCont.current
-        setTop(el.offsetTop)
+        const { top } = el.getBoundingClientRect()
+        setTop(top)
 
         if (full) {
-            setHeight(pageHeight - el.offsetTop - 2)
+            setHeight(pageHeight - top - 2)
         }
     }, [refCont, setHeight, setTop, full, pageHeight])
 
