@@ -5,10 +5,7 @@ const originSchema = require('../schemas/origin')
 
 module.exports = new Schema(
     {
-        point: {
-            type: pointSchema,
-            required: true,
-        },
+        point: pointSchema,
         title: {
             type: String,
             required: true,

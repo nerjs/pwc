@@ -1,12 +1,30 @@
 const { Schema } = require('mongoose')
 
-module.exports = new Schema({
-    lat: {
-        type: Number,
-        required: true,
+const PointSchema = new Schema({
+    type: {
+        type: String,
+        default: 'Point',
     },
-    lng: {
-        type: Number,
-        required: true,
+    coordinates: {
+        type: [Number],
     },
 })
+
+;[{ name: 'lat', idx: 0 }, { name: 'lng', idx: 1 }].forEach(({ name, idx }) => {
+    PointSchema.virtual(name)
+        .get(function() {
+            return (this.coordinates || [])[idx]
+        })
+        .set(function(num) {
+            if (!this.coordinates || !Array.isArray(this.coordinates)) {
+                this.coordinates = [0, 0]
+            }
+
+            this.coordinates[idx] = num
+        })
+})
+
+module.exports = {
+    type: PointSchema,
+    index: '2dsphere',
+}
