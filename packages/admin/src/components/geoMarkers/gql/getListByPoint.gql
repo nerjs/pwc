@@ -1,0 +1,10 @@
+query($point: PointInput!, $distance: Number!) {
+  getListByPoint(point: $point, distance: $distance) {
+    id
+    title
+    point {
+      lat
+      lng
+    }
+  }
+}
