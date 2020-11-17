@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@pw/log": "1.0.0",
-    "merge": "^1.2.1",
+    "merge": "^2.1.0",
     "mongoose": "^5.7.9",
     "wait-port": "^0.2.6"
   }
