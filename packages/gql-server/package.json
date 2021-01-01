@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.js"
+    "start": "nodemon ./index.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +28,8 @@
     "mongoose": "^5.7.7",
     "nodemon": "^1.19.2",
     "wait-port": "^0.2.6",
-    "yup": "^0.27.0"
-  }
+    "yup": "^0.27.0",
+    "snyk": "^1.437.3"
+  },
+  "snyk": true
 }
