@@ -12,7 +12,7 @@
   "dependencies": {
     "@pw/log": "1.0.0",
     "merge": "^1.2.1",
-    "mongoose": "^5.7.9",
+    "mongoose": "^6.0.4",
     "wait-port": "^0.2.6"
   }
 }
